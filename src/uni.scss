@@ -1,0 +1,120 @@
+
+/* ========================================
+   uni.scss - 微信小程序兼容写法
+   
+   使用 CSS 自定义属性（--变量）代替 SCSS 变量
+   微信小程序原生支持！
+   ======================================== */
+
+page {
+  /* ========================================
+     颜色变量
+     ======================================== */
+  --primary-color: #FF6B6B;
+  --secondary-color: #4ECDC4;
+  --accent-color: #FFE66D;
+  --success-color: #95E1D3;
+  --warning-color: #F38181;
+  --info-color: #AA96DA;
+
+  --color-red: #FF6B6B;
+  --color-teal: #4ECDC4;
+  --color-yellow: #FFE66D;
+  --color-green: #95E1D3;
+  --color-purple: #AA96DA;
+  --color-orange: #FCBAD3;
+  --color-blue: #A8D8EA;
+
+  /* ========================================
+     文本与背景颜色
+     ======================================== */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #999999;
+  --text-white: #FFFFFF;
+  --bg-primary: #F8F8F8;
+  --bg-white: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-page: #F8F8F8;
+  --border-color: #E5E5E5;
+
+  /* ========================================
+     圆角
+     ======================================== */
+  --border-radius-sm: 8rpx;
+  --border-radius-md: 16rpx;
+  --border-radius-lg: 24rpx;
+  --border-radius-xl: 32rpx;
+
+  /* ========================================
+     间距
+     ======================================== */
+  --spacing-xs: 8rpx;
+  --spacing-sm: 16rpx;
+  --spacing-md: 24rpx;
+  --spacing-lg: 32rpx;
+  --spacing-xl: 48rpx;
+
+  /* ========================================
+     字体大小
+     ======================================== */
+  --font-size-xs: 24rpx;
+  --font-size-sm: 28rpx;
+  --font-size-md: 32rpx;
+  --font-size-lg: 36rpx;
+  --font-size-xl: 44rpx;
+  --font-size-xxl: 52rpx;
+
+  /* ========================================
+     阴影
+     ======================================== */
+  --shadow-sm: 0 4rpx 8rpx rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 16rpx 32rpx rgba(0, 0, 0, 0.12);
+
+  /* ========================================
+     动画
+     ======================================== */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ========================================
+   主题切换
+   ======================================== */
+.theme-light {
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #999999;
+  --text-white: #FFFFFF;
+  --bg-primary: #F8F8F8;
+  --bg-white: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-page: #F8F8F8;
+  --border-color: #E5E5E5;
+}
+
+.theme-eye {
+  --text-primary: #5C5C4B;
+  --text-secondary: #8B8B78;
+  --text-light: #B5B5A3;
+  --text-white: #FFFFFF;
+  --bg-primary: #F5F0E1;
+  --bg-white: #FAF6EB;
+  --bg-card: #FAF6EB;
+  --bg-page: #F5F0E1;
+  --border-color: #E8E0D0;
+}
+
+.theme-dark {
+  --text-primary: #E5E5E5;
+  --text-secondary: #A0A0A0;
+  --text-light: #707070;
+  --text-white: #1A1A1A;
+  --bg-primary: #1A1A1A;
+  --bg-white: #2A2A2A;
+  --bg-card: #2A2A2A;
+  --bg-page: #121212;
+  --border-color: #3A3A3A;
+}

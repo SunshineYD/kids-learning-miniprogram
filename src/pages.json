@@ -1,0 +1,176 @@
+{
+  "pages": [{
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "少儿课后学习",
+        "navigationBarBackgroundColor": "#FF6B6B",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#FFF5F5"
+      }
+    },
+    {
+      "path": "pages/math-practice/math-practice",
+      "style": {
+        "navigationBarTitleText": "口算练习",
+        "navigationBarBackgroundColor": "#FF6B6B",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#FFF5F5",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/english/english",
+      "style": {
+        "navigationBarTitleText": "单词背诵",
+        "navigationBarBackgroundColor": "#FFE66D",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#FFFDF5"
+      }
+    },
+    {
+      "path": "pages/chinese-practice/chinese-practice",
+      "style": {
+        "navigationBarTitleText": "语文课后巩固",
+        "navigationBarBackgroundColor": "#4ECDC4",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F0FFFD",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/course/course",
+      "style": {
+        "navigationBarTitleText": "课程中心",
+        "navigationBarBackgroundColor": "#4ECDC4",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F0FFFD"
+      }
+    },
+    {
+      "path": "pages/task/task",
+      "style": {
+        "navigationBarTitleText": "每日任务",
+        "navigationBarBackgroundColor": "#FFE66D",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#FFFDF5"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationBarBackgroundColor": "#95E1D3",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F0FFF9"
+      }
+    },
+    {
+      "path": "pages/settings/settings",
+      "style": {
+        "navigationBarTitleText": "设置",
+        "navigationBarBackgroundColor": "#AA96DA",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F8F8F8"
+      }
+    },
+    {
+      "path": "pages/check-in/check-in",
+      "style": {
+        "navigationBarTitleText": "每日打卡",
+        "navigationBarBackgroundColor": "#FF6B6B",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#FFF5F5"
+      }
+    },
+    {
+      "path": "pages/wrong-questions/wrong-questions",
+      "style": {
+        "navigationBarTitleText": "错题本",
+        "navigationBarBackgroundColor": "#AA96DA",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F8F8F8"
+      }
+    },
+    {
+      "path": "pages/study-report/study-report",
+      "style": {
+        "navigationBarTitleText": "学习报告",
+        "navigationBarBackgroundColor": "#95E1D3",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F0FFF9"
+      }
+    },
+    {
+      "path": "pages/parent-center/parent-center",
+      "style": {
+        "navigationBarTitleText": "家长中心",
+        "navigationBarBackgroundColor": "#667EEA",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F5F7FA"
+      }
+    },
+    {
+      "path": "pages/membership/membership",
+      "style": {
+        "navigationBarTitleText": "会员中心",
+        "navigationBarBackgroundColor": "#667EEA",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F5F7FA"
+      }
+    },
+    {
+      "path": "pages/feedback/feedback",
+      "style": {
+        "navigationBarTitleText": "意见反馈",
+        "navigationBarBackgroundColor": "#667EEA",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F5F7FA"
+      }
+    },
+    {
+      "path": "pages/about/about",
+      "style": {
+        "navigationBarTitleText": "关于我们",
+        "navigationBarBackgroundColor": "#667EEA",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F5F7FA"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "少儿课后学习",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF6B6B",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/course/course",
+        "text": "课程"
+      },
+      {
+        "pagePath": "pages/task/task",
+        "text": "任务"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  }
+}
