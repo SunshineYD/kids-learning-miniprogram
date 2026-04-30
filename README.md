@@ -9,6 +9,8 @@
 
 - uni-app + Vue 3 + TypeScript
 - Pinia 状态管理
+- Vite 构建工具
+- SCSS 样式预处理器
 
 ## 项目结构
 
@@ -40,9 +42,15 @@ miniProgram/
 │   │   ├── KidButton/
 │   │   ├── QuickNav/
 │   │   ├── ThemeToggle/
-│   │   ├── chinese/
+│   │   ├── AudioPlayer/  # 音频播放器
+│   │   ├── chinese/     # 语文模块组件
+│   │   │   ├── layout/  # 布局组件
+│   │   │   ├── practice/# 练习组件
+│   │   │   └── shared/  # 共享组件
 │   │   ├── english/
 │   │   └── math/
+│   ├── composables/       # Vue Composables
+│   │   └── usePracticeFeedback.ts
 │   ├── store/            # Pinia 状态管理
 │   ├── data/             # 题库数据
 │   ├── utils/            # 工具函数
@@ -72,14 +80,31 @@ miniProgram/
 - ✅ 年级选择（1-4年级）
 - ✅ 数学口算练习（分级题库、自动批改、错题管理）
 - ✅ 英语单词背诵（跟读、听写、艾宾浩斯复习）
-- ✅ 语文课后巩固（生字听写、古诗词背诵）
+- ✅ 语文课后巩固
+  - 生字听写（即时反馈、音频播放）
+  - 拼音认读
+  - 组词造句
+  - 古诗词背诵、默写
+  - 课外阅读
+  - 常识答题
+  - 年级题量适配（1-2年级5题，3-4年级8题）
 - ✅ 每日打卡体系
+- ✅ 每日任务卡片
 - ✅ 错题本
 - ✅ 学习报告
 - ✅ 家长中心
 - ✅ 会员功能
 - ✅ 意见反馈
 - ✅ 关于我们
+
+### 最近更新（2026-04-29）
+
+- 🎯 语文练习模块组件化重构
+- 📦 新增多个专用练习组件
+- ✨ 完善即时反馈机制
+- 🔊 优化音频播放器，避免界面抖动
+- 📐 根据年级动态调整题量
+- 📝 更新需求文档，添加完整组件架构说明
 
 ## 快速开始
 
@@ -160,12 +185,45 @@ npm run type-check
 
 当前 API 是模拟的，需要替换为真实接口。
 
+### 组件架构说明
+
+项目采用模块化组件化开发，主要组件结构：
+
+```
+src/components/chinese/
+├── layout/           # 布局组件
+│   ├── PracticeHeader.vue
+│   └── ResultDisplay.vue
+├── practice/       # 练习组件
+│   ├── DictationPractice.vue
+│   ├── PinyinPractice.vue
+│   ├── WordSentencePractice.vue
+│   ├── PoemRecitePractice.vue
+│   ├── PoemWritePractice.vue
+│   └── OptionPractice.vue
+└── shared/       # 共享组件
+    ├── FeedbackDisplay.vue
+    └── NavigationButtons.vue
+```
+
+### 技术说明
+
+- **Composables 使用
+  - `usePracticeFeedback.ts` - 练习反馈状态管理
+
+- **Store 模块**
+  - `chinese.ts` - 语文练习状态（支持年级题量适配）
+
+- **工具模块**
+  - `audio.ts` - 音频播放工具
+
 ## 注意事项
 
 1. 本项目使用 uni-app 框架开发，可编译到微信小程序平台
 2. 所有页面已在 `pages.json` 中配置
 3. 样式统一使用 SCSS 变量定义在 `src/styles/variables.scss`
 4. 状态管理使用 Pinia，位于 `src/store/` 目录
+5. 组件按功能模块划分，保持单一职责原则
 
 ## 需求文档
 
