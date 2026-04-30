@@ -26,7 +26,7 @@ function generateDailyTasks(grade: Grade): DailyTask[] {
       icon: '🧮',
       color: '#FF6B6B',
       completed: false,
-      progress: 0,
+      progress: 8,
       total: 15
     },
     {
@@ -36,8 +36,8 @@ function generateDailyTasks(grade: Grade): DailyTask[] {
       description: '背诵8个新单词',
       icon: '🎵',
       color: '#FFE66D',
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 8,
       total: 8
     }
   ]

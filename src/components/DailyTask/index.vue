@@ -4,13 +4,32 @@ import type { DailyTask as DailyTaskType } from '@/types'
 
 const appStore = useAppStore()
 
+const getSubjectPagePath = (subject: string) => {
+  const paths = {
+    chinese: '/pages/chinese-practice/chinese-practice',
+    math: '/pages/math-practice/math-practice',
+    english: '/pages/english/english'
+  }
+  return paths[subject as keyof typeof paths]
+}
+
 const handleTaskClick = (task: DailyTaskType) => {
-  if (!task.completed) {
-    appStore.completeTask(task.id)
-    uni.showToast({
-      title: '任务完成! 🎉',
-      icon: 'success'
+  const pagePath = getSubjectPagePath(task.subject)
+  
+  if (task.completed) {
+    uni.showModal({
+      title: '任务已完成',
+      content: '是否继续练习？',
+      confirmText: '继续练习',
+      cancelText: '取消',
+      success: (res) => {
+        if (res.confirm) {
+          uni.navigateTo({ url: pagePath })
+        }
+      }
     })
+  } else {
+    uni.navigateTo({ url: pagePath })
   }
 }
 
