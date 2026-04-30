@@ -29,6 +29,19 @@ import { storage } from '@/utils/storage'
 
 const STORAGE_KEY = 'chinese-progress'
 
+function getQuestionCountByGrade(grade: Grade): number {
+  if (grade === 1 || grade === 2) {
+    return 5
+  } else {
+    return 8
+  }
+}
+
+function getRandomItems<T>(items: T[], count: number): T[] {
+  const shuffled = [...items].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, Math.min(count, items.length))
+}
+
 export const useChineseStore = defineStore('chinese', () => {
   const progress = ref<ChineseProgress | null>(null)
   const currentSemester = ref<1 | 2>(1)
@@ -103,12 +116,14 @@ export const useChineseStore = defineStore('chinese', () => {
   })
 
   function startDictation(lesson: ChineseLesson): DictationPractice {
+    const count = getQuestionCountByGrade(progress.value?.grade || 1)
+    const selectedChars = getRandomItems(lesson.characters, count)
     const practice: DictationPractice = {
       id: `dictation-${Date.now()}`,
       lessonId: lesson.id,
-      characters: lesson.characters,
+      characters: selectedChars,
       currentIndex: 0,
-      userAnswers: new Array(lesson.characters.length).fill(''),
+      userAnswers: new Array(selectedChars.length).fill(''),
       completed: false,
       score: 0
     }
@@ -158,12 +173,14 @@ export const useChineseStore = defineStore('chinese', () => {
   }
 
   function startPinyin(lesson: ChineseLesson): PinyinPractice {
+    const count = getQuestionCountByGrade(progress.value?.grade || 1)
+    const selectedChars = getRandomItems(lesson.characters, count)
     const practice: PinyinPractice = {
       id: `pinyin-${Date.now()}`,
       lessonId: lesson.id,
-      characters: lesson.characters,
+      characters: selectedChars,
       currentIndex: 0,
-      userAnswers: new Array(lesson.characters.length).fill(''),
+      userAnswers: new Array(selectedChars.length).fill(''),
       completed: false,
       score: 0
     }
@@ -207,12 +224,14 @@ export const useChineseStore = defineStore('chinese', () => {
   }
 
   function startWordSentence(lesson: ChineseLesson): WordSentencePractice {
+    const count = getQuestionCountByGrade(progress.value?.grade || 1)
+    const selectedWords = getRandomItems(lesson.words, count)
     const practice: WordSentencePractice = {
       id: `wordsentence-${Date.now()}`,
       lessonId: lesson.id,
-      words: lesson.words,
+      words: selectedWords,
       currentIndex: 0,
-      userAnswers: new Array(lesson.words.length).fill(''),
+      userAnswers: new Array(selectedWords.length).fill(''),
       completed: false,
       score: 0
     }
