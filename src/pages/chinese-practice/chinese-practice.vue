@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useChineseStore } from '@/store/chinese'
 import TextbookTab from '@/components/chinese/tabs/TextbookTab.vue'
 import PoemTab from '@/components/chinese/tabs/PoemTab.vue'
@@ -19,10 +19,7 @@ const {
   currentArticle,
   showResult,
   resultScore,
-  todayReading,
-  dailyPracticeCompleted,
   switchTab,
-  switchSemester,
   startDictation,
   startPinyin,
   startWordSentence,
@@ -35,6 +32,15 @@ const {
   isLessonCompleted,
   isPoemCompleted,
 } = useChinesePractice()
+
+const todayReading = computed(() => {
+  if (!chineseStore.readings || chineseStore.readings.length === 0) return null
+  return chineseStore.readings[0] || null
+})
+
+const dailyPracticeCompleted = computed(() => {
+  return chineseStore.todayDailyPractice?.completed ?? false
+})
 
 onMounted(() => {
   chineseStore.init()
@@ -57,7 +63,7 @@ onMounted(() => {
         :current-semester="chineseStore.currentSemester"
         :lessons="chineseStore.lessons"
         :is-lesson-completed="isLessonCompleted"
-        @switch-semester="switchSemester"
+        @switch-semester="chineseStore.setSemester"
         @start-dictation="startDictation"
         @start-pinyin="startPinyin"
         @start-word-sentence="startWordSentence"
@@ -69,7 +75,7 @@ onMounted(() => {
         :current-semester="chineseStore.currentSemester"
         :poems="chineseStore.poems"
         :is-poem-completed="isPoemCompleted"
-        @switch-semester="switchSemester"
+        @switch-semester="chineseStore.setSemester"
         @start-poem-recite="startPoemRecite"
         @start-poem-write="startPoemWrite"
       />

@@ -1,9 +1,8 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useChineseStore } from '@/store/chinese'
 import type { ChineseLesson, AncientPoem, ReadingArticle } from '@/types'
 import type { PracticeMode } from '@/constants/chinese'
 import { PRACTICE_MODES } from '@/constants/chinese'
-import { getReadingByGrade } from '@/data/chinese-content'
 
 export function useChinesePractice() {
   const chineseStore = useChineseStore()
@@ -16,16 +15,6 @@ export function useChinesePractice() {
   const showResult = ref(false)
   const resultScore = ref(0)
 
-  const todayReading = computed(() => {
-    if (!chineseStore.progress) return null
-    const readings = getReadingByGrade(chineseStore.progress.grade)
-    return readings[0] || null
-  })
-
-  const dailyPracticeCompleted = computed(() => {
-    return chineseStore.todayDailyPractice?.completed ?? false
-  })
-
   const switchTab = (tabId: string) => {
     const validTabs = ['textbook', 'poem', 'daily'] as const
     if (validTabs.includes(tabId as any)) {
@@ -34,10 +23,6 @@ export function useChinesePractice() {
       chineseStore.setPracticeType(tabId as any)
       resetPractice()
     }
-  }
-
-  const switchSemester = (semester: 1 | 2) => {
-    chineseStore.setSemester(semester)
   }
 
   // Helper function for starting lesson practice modes
@@ -105,8 +90,8 @@ export function useChinesePractice() {
 
   const isLessonCompleted = (lesson: ChineseLesson): boolean => {
     if (!chineseStore.progress) return false
-    const index = chineseStore.lessons.findIndex((l) => l.id === lesson.id)
-    return chineseStore.progress.lessonsCompleted.includes(index)
+    const index = chineseStore.lessons.findIndex(l => l.id === lesson.id)
+    return index !== -1 && chineseStore.progress.lessonsCompleted.includes(index)
   }
 
   const isPoemCompleted = (poem: AncientPoem): boolean => {
@@ -122,10 +107,7 @@ export function useChinesePractice() {
     currentArticle,
     showResult,
     resultScore,
-    todayReading,
-    dailyPracticeCompleted,
     switchTab,
-    switchSemester,
     startDictation,
     startPinyin,
     startWordSentence,
